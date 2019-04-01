@@ -33,7 +33,7 @@ function printWeekDay(){
 function printMonth(){
     var day=[];
     var blanks = nowDt.day();
-    console.log(blanks);
+    // console.log(blanks);
     // console.log("day: " + blanks);
     // console.log(nowDt.date());
         // call a function to find number of days in the month
