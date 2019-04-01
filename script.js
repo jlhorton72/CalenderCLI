@@ -33,11 +33,14 @@ function printWeekDay(){
 function printMonth(){
     var day=[];
     var blanks = nowDt.day();
+    console.log(blanks);
+    // console.log("day: " + blanks);
+    // console.log(nowDt.date());
         // call a function to find number of days in the month
     var dom = getDays(nowDt.month() + 1);
     var totDay = blanks + dom;
         //  builds array for days in calender
-    for (i = 1; i <= totDay - 1; i++) {
+    for (i = 0; i < totDay; i++) {
         if (i < blanks){
             day.push("");
         } // end of if
@@ -50,6 +53,7 @@ function printMonth(){
     var wkdays = lodash.chunk(day, 7);
     var strDay = ""; //"          ";
         // console.log(weeks);
+        // console.log(wkdays);        // testing for arraay in feb... its off
         // console.log(wkdays[0][5]);       // this is how i found the way to use pad....
     for (i = 0; i < weeks ; i++){
         for (j = 0; j <7; j++){
@@ -102,7 +106,12 @@ function printCal(){
          displayMonth();//nowDt.month());
          printWeekDay();
          printMonth();
-         nowDt = nowDt.add(1, 'M');
+         if (nowDt.month() == 0 && nowDt.day() > 28){
+            nowDt = nowDt.subtract(3, 'days' );
+            // console.log(nowDt.date());           // trying to troubleshoot feb being off
+         } // end of if
+        else
+            nowDt = nowDt.add(1, 'M');
     } // end of for loop
 } // this should print calendar
 
